@@ -4,7 +4,6 @@ require("dotenv").config();
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = process.env.TELEGRAM_TOKEN;
-console.log(token);
 
 const chatId = 1224847249;
 
