@@ -32,7 +32,7 @@ try {
 
 // console.log(file);
 
-bot.onText(/\/check[ ]*/, (msg, match) => {
+bot.onText(/\/[a-zA-Z]*[ ]*[0-9]*/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
     // of the message
@@ -40,16 +40,23 @@ bot.onText(/\/check[ ]*/, (msg, match) => {
     // const chatId = msg.chat.id;
     // const rollNo = match[1]; // the captured "rollNo"
   
-    // console.log(chatId);
+    // console.log(match);
   
     // // send back the matched "whatever" to the chat
     // bot.sendMessage(chatId, "Hello " + rollNo);
-    console.log("Checking for updates...");
-    checkUpdates().then((hasNewComments) => {
-        if(!hasNewComments) {
-            bot.sendMessage(chatId, "No new comments");
-        }
-    });
+    switch (match[0]) {
+        case "/check":
+            console.log("Checking for updates...");
+            checkUpdates().then((hasNewComments) => {
+                if(!hasNewComments) {
+                    bot.sendMessage(chatId, "No new comments");
+                }
+            });
+            break;
+        
+        default:
+            break;
+    }
   });
 
 console.log("Hey");
