@@ -123,4 +123,4 @@ const checkUpdates = async () => {
 
 checkUpdates();
 
-setInterval(checkUpdates, 1200000);
+setInterval(checkUpdates, 60000);
